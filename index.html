@@ -1,104 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Underdog Rescue</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-    crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <script src="index.js"></script>
 
     <style>
-        body {
-            background-color: #556b2f;
+        .hidden {
+            display: none;
         }
-
-        #container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            grid-auto-rows: minmax(100px, auto);
-        }
-
-        
-        #output{
-            grid-column: 1 / 4;
-            grid-row: 1;
-            background-color: darkgray;
-            border: 5px solid;
-            height: auto;
-            width: auto;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        #mState {
-            grid-column: 1 / 2;
-            grid-row: 2;
-            border: 5px solid;
-            background-color: darkgray;
-            padding: 10px;
-        }
-
-        #card {
-            grid-column: 4;
-            grid-row: 2;
-            border: 5px solid;
-            padding: 10px;
-        }
-
     </style>
 
-    </head>
+</head>
+
 <body>
-    <div id="container">
-        
-            <div id="output">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    Deleniti eum consequatur enim sequi, omnis culpa atque sapiente quidem 
-                    labore, ea nemo voluptatem ducimus aperiam vel magnam sed voluptates, hic impedit?
-                </p>
-
-                <button id="btn">Click for Random Dog Facts</button>
-
+    <div class="container">
+        <!-- specifies when the navbar will collapse -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="#" class="navbar-brand">
+                <img src="https://ouch-cdn2.icons8.com/H-nx6iaSf-tRDNsUmfiJmomgJZZ-pscs_RUGd8CqS_M/rs:fit:844:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMjE1/L2QwNDEyNTc1LTgz/MjgtNDViNC1hN2Q3/LWRjYTRjODM3ZDc3/Mi5zdmc.png"
+                    alt="#logoname" width="100" class="d-inline-block align-top" />
+                <span class="hidden">UnderDogRescue</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu" aria-expanded="false" aria-lable="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="toggleMobileMenu">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li>
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Other</a>
+                    </li>
+                </ul>
             </div>
-    
-
-    <!-- this is for the Mission Statment -->
-        <div id="mState">
-            <p>
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-                Our Mission Statment Goes Here! 
-            </p>
-        </div>
-
-
-        <div class="card" id="dcard">
-            <img class="card-img-top" src="https://wallpaperaccess.com/full/1960066.jpg" alt="Card image">
-            <div class="card-body">
-            <h4 class="card-title">Breed!</h4>
-            <p class="card-text">Some example text.</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-        </div>
-
-        </div>
-
+        </nav>
     </div>
 
+    <hr class="border-bottom border-dark border-3" />
+
+    <div class="px-4 py-5 my-5 text-center">
+        <!-- <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h1 class="display-5 fw-bold">Under Dog Rescue</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Here will be our dog facts</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Dog Fact!</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Previous Fact</button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="border-bottom border-dark border-3" />
+
+
+    <!-- this is for the Mission Statment 
+    Should we have this in an about page?-->
+    <div id="mState">
+        <p>
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+            Our Mission Statment Goes Here!
+        </p>
+    </div>
+
+    <hr class="border-bottom border-dark border-3" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+              <form id="search-form">
+                <div class="input-group input-group-lg">
+                  <input
+                    id = "search-text"
+                    class="form-control search-bar"
+                    placeholder="Search dog by location..."
+                  />
+                  <button class="btn btn-primary input-group-btn" type="submit">
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+
+    <div class="row mt-5" id="results">
+        <!-- DOGS SHOW UP HERE! -->
+        <div id="Dogs-Container" class='row'></div>
+
+        <div class="col-3 mb-3">
+            <div class="dog card">
+                <img src="https://i.imgur.com/8r7vdWe.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="dog-name">Dog Name</h5>
+                    <h6 class="dog-age">Dog age</h6>
+                    <h7 class="dog-breed">Dog breed</h7>
+                    <a href="#" id="adoptionSite" class="btn btn-primary">ADOPT!</a>
+                </div>
+            </div>
+        </div>
     
+        <div class="col-3 mb-3">
+            <div class="dog card">
+                <img src="https://i.imgur.com/6iLPXCn.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="dog-name">Dog Name</h5>
+                    <h6 class="dog-age">Dog age</h6>
+                    <h7 class="dog-breed">Dog breed</h7>
+                    <a href="#" id="adoptionSite" class="btn btn-primary">ADOPT!</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-3 mb-3">
+            <div class="dog card">
+                <img src="https://i.imgur.com/hHINAl8.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="dog-name">Dog Name</h5>
+                    <h6 class="dog-age">Dog age</h6>
+                    <h7 class="dog-breed">Dog breed</h7>
+                    <a href="#" id="adoptionSite" class="btn btn-primary">ADOPT!</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="dog card">
+                <img src="https://i.imgur.com/JN6Urq1.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="dog-name">Dog Name</h5>
+                    <h6 class="dog-age">Dog age</h6>
+                    <h7 class="dog-breed">Dog breed</h7>
+                    <a href="#" id="adoptionSite" class="btn btn-primary">ADOPT!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
