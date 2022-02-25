@@ -1,9 +1,11 @@
 
 //This is the API for the random dog facts that will be appearing towards the top of the page.
 
-function renderDogFacts(fact) {
+let factNumber = 1;
+
+function renderDogFacts() {
   let dogFactHTML = document.getElementById('dogFacts')
-  axios.get(`https://cors-anywhere.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
+  axios.get(`https://cors-anywhere.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=${factNumber}`, {
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
@@ -37,16 +39,12 @@ function renderDog(animalsArray) {
                           <div class="card-body">
                               <h5 class="card-title">${currentDog.breeds.primary}</h5>
                               <p class="card-text">${currentDog.age}</p>
-                              <a href="#" class="btn btn-primary">Adopt Me</a>
+                              <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
                           </div>
                         </div>`
-        dogsCon.innerHTML += dogCard     
+        dogsCon.innerHTML += dogCard;
     }
-
     }).join('');
-
-    // dogsCon.appendChild(dogHTML);
-    // return dogHTML.join('');
 }
 
 //THis is the API for the Adoptable pets on the page
@@ -56,7 +54,7 @@ let search_bar = document.getElementById('search-text');
 let searchBtn = document.getElementById('search_button');
 
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6ImM1Y2Q4ODM4YjI0M2VlMTc2YjA4ZjI4Y2Q3ZjNiOGMzYTA2ODgzZTZkZTBhYWY3Yzg1ZGRmMDExMzk4MmVkZDZiYmM0NmJhNTliYjFlMTUwIiwiaWF0IjoxNjQ1NTkwNzQ1LCJuYmYiOjE2NDU1OTA3NDUsImV4cCI6MTY0NTU5NDM0NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.rFhc5fjqtTVx-NtEn6ip22GzAOCxyBmfm1kb-L3UbWPUU-GMtNrmuTVh-kUSJd10FEm_MyuiDzLTx0n4_lnguRwO3tflYIUr4PzRncddKqeAIOQbDxrKbZL5LYZYmjszZuO6Ydri7WlDXD6EStEFUdkSg3bnw_lLEterwbB4eSANIUTb6dB77hMVAR9HUQLVvfnHXxdjlj4tTFmULF5-R8yHP6soiY64SSGiqwd2qk4bZ0efJ4twp8UnBCMS5TdtD2-BIzFvBEDwzKZHU1KhPctkUBXqBWrIeaBSoqcj2ZRJ301yXKh8ilK0gUylLXmdOhYTRIVvzOzuPdcHPCPnmA");
+myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjdiN2MzZjAyNDZlMzRlMjNlOGY3ZjJlOGI5NWU1Y2NjN2Y3ZWU3OThlN2VlODdlNzliYmE1OGFkNjg4ZDAwN2FmZWU0YmFkYzRmMmE0ZTgwIiwiaWF0IjoxNjQ1NzQ5MjY5LCJuYmYiOjE2NDU3NDkyNjksImV4cCI6MTY0NTc1Mjg2OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.HasnDpn9Tr8eRPj92Dwqm08-XzU6_Q-75eilxLVFE5_BeCYEYsFEB-It1hKWN_v02XAc4cSXK81WOuGKhVJ5fu08TaXGeMmChxDBIfjeNvw9nlet5DnhRjNN-edAHSkLq8Qety2f5peuLh2Cpqk6L7KipwnQ0PUDq0OTmrhdKPhYz_zmDEOy3XEM32Xq4EcwznE-dCl6OTsFsBIUAO-SVvCx8s_vyTRApFgB7RGN768CFgeWFYM_BtXsFXxhK3pUX3Hv1hNuf9jKayzCV9RLyXOTOdbOdfMsgsZboyRW8oNZxyJ99Vffp2vXo_XoAGJZi3V-6ib9ow13NdOwSkrjpw");
 
 var requestOptions = {
   method: 'GET',
@@ -78,17 +76,17 @@ searchBtn.addEventListener('click', (event) => {
       renderDog(data.animals)
       });
 });
-
-  // //This is the API for the random dog facts that will be appearing towards the top of the page.
-  // var requestOptions = {
-  //   method: 'GET',
-  //   redirect: 'follow'
-  // };
-  
-  // fetch("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1", requestOptions)
-  //   .then(response => response.text())
-  //   .then(result => console.log(result))
-  //   .catch(error => console.log('error', error));
-
  
  
+function nextFact() {
+  factNumber++;
+  renderDogFacts();
+}
+
+function previousFact() {
+  if (factNumber==0) {
+    return;
+  }
+  factNumber--;
+  renderDogFacts();
+}
