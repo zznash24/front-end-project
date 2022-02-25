@@ -56,10 +56,10 @@
         <!-- <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
         <h1 class="display-5 fw-bold">Under Dog Rescue</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Here will be our dog facts</p>
+            <p class="lead mb-4" id="dogFacts">Here will be our dog facts</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Dog Fact!</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Previous Fact</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="previousFact()">Previous Fact</button>
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="nextFact()">Dog Fact!</button>
             </div>
         </div>
     </div>
@@ -111,7 +111,10 @@
         <div id="Dogs-Container" class='row'></div>
 
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
+    
 </body>
 
 </html>

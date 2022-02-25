@@ -1,3 +1,20 @@
+
+//This is the API for the random dog facts that will be appearing towards the top of the page.
+
+let factNumber = 1;
+
+function renderDogFacts() {
+  let dogFactHTML = document.getElementById('dogFacts')
+  axios.get(`https://cors-anywhere.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=${factNumber}`, {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  }).then(response => {
+    dogFactHTML.innerHTML = response.data[0].fact;
+  })
+}
+renderDogFacts()
+
 //Called function for generating the card for adoptable dogs
 console.log('im here');
 
@@ -22,16 +39,12 @@ function renderDog(animalsArray) {
                           <div class="card-body">
                               <h5 class="card-title">${currentDog.breeds.primary}</h5>
                               <p class="card-text">${currentDog.age}</p>
-                              <a href="#" class="btn btn-primary">Adopt Me</a>
+                              <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
                           </div>
                         </div>`
-        dogsCon.innerHTML += dogCard     
+        dogsCon.innerHTML += dogCard;
     }
-
     }).join('');
-
-    // dogsCon.appendChild(dogHTML);
-    // return dogHTML.join('');
 }
 
 //THis is the API for the Adoptable pets on the page
@@ -63,17 +76,17 @@ searchBtn.addEventListener('click', (event) => {
       renderDog(data.animals)
       });
 });
-
-  // //This is the API for the random dog facts that will be appearing towards the top of the page.
-  // var requestOptions = {
-  //   method: 'GET',
-  //   redirect: 'follow'
-  // };
-  
-  // fetch("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1", requestOptions)
-  //   .then(response => response.text())
-  //   .then(result => console.log(result))
-  //   .catch(error => console.log('error', error));
-
  
  
+function nextFact() {
+  factNumber++;
+  renderDogFacts();
+}
+
+function previousFact() {
+  if (factNumber==0) {
+    return;
+  }
+  factNumber--;
+  renderDogFacts();
+}
