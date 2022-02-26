@@ -20,16 +20,21 @@ function renderDog(animalsArray) {
   console.log('data fetch', animalsArray)
   const dConInner = document.createElement("div")
   let dogHTML = animalsArray.map(currentDog => {
-// map goes through each element, return creates a new array of each element that is returned
+    // map goes through each element, return creates a new array of each element that is returned
     if (currentDog.primary_photo_cropped === null || currentDog.primary_photo_cropped.small === '') {
       return `
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card text-white bg-dark">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj_vJblJLSn59TSwKbG3-CawQ39uUHDX3vf0nX8q48Mr8anv5aBai_OGk2HrtqlVh1sy0&usqp=CAU" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${currentDog.breeds.primary}</h5>
-                <p class="card-text">${currentDog.age}</p>
-                <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
+            <div class="card-body row">
+              <div class="col-6">
+                  <h5 class="card-title">${currentDog.breeds.primary}</h5>
+                  <p class="card-text">${currentDog.age}</p>
+              </div>
+              <div class="col-6">
+                Spade
+              </div>
+              <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
             </div>
           </div>
         </div>`
@@ -38,9 +43,14 @@ function renderDog(animalsArray) {
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card text-white bg-dark">
             <img src="${currentDog.primary_photo_cropped.small}" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body row">
+              <div class="col-6">
                 <h5 class="card-title">${currentDog.breeds.primary}</h5>
                 <p class="card-text">${currentDog.age}</p>
+              </div>
+              <div class="col-6">
+                Spade
+              </div>
                 <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
             </div>
           </div>
@@ -58,7 +68,7 @@ let searchBtn = document.getElementById('search_button');
 
 var myHeaders = new Headers();
 
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjNiMGY2Mzc4MmE3Nzg5OGZlZTc1NmJjNTFlMDcyYjY5NGI3MGY0MWI2YTg5YjAxOWZlNDBhMDI0NGUyZmNhMDkwNjEyYmFlMWRmNDYyYTg4IiwiaWF0IjoxNjQ1ODk2ODIyLCJuYmYiOjE2NDU4OTY4MjIsImV4cCI6MTY0NTkwMDQyMiwic3ViIjoiIiwic2NvcGVzIjpbXX0.Nv9DBFjWJWgNkIdOBf6ElmaSQMCBXkRGDOGuSZhYjfGppGSFIfiCuRfr0sQC2fGDzEyP1p7iToXr8kxgg1n1Kcmf9vjdITejbsPR0GBiGGnE55aHOp2TKBCFyLuOYWHB-Tq7EsLl1Y3FdorQwMWWzQLzsLUdIom8A_s9a_UemjiAPoLBafes3WTl5FSFEnRHopz_R977lrV3VZBozHNoKqCTXMXaDogMn1y7nBIpgS0LedpEKaz3x4m4lXMssX7zHV64hksdPnCesXOhSpbQ5U43PcDydMAbaAle9I9I-F3c7zKulcAUF5E3-QHDrk4lKb4zRgKFyljRVYrkW474GQ");
+myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjViMWY1Zjg1NTBkYjc5NTljZGEyZGZjYjIzNTcxZDBkZDkwOWQ2ZDk0MzVkZGU4NjFmMGVmZTgyOWQzYWU5NmIxN2JkMjc2NGE0ZWI5ZDUwIiwiaWF0IjoxNjQ1OTAwODgzLCJuYmYiOjE2NDU5MDA4ODMsImV4cCI6MTY0NTkwNDQ4Mywic3ViIjoiIiwic2NvcGVzIjpbXX0.G74zQOThzFX8yU69vOYFkRSeENuDOzhGnxuw0Yn1gyXNtWlh5vf49KGuBq0TSzvw36tFv0QV7tiiIJS5h7Lxv8tYCFujecrLN8dLbrCEdOyNBvrGePJymnidejTHFH9M66svx20vQowOxtscY3BtmQLYzmnAWGK7HVnc9hkIZhtuehTJTxnxYe2QThBSg0JatClIWf9qM8Jm7tQzAlo5Kg3NYmXicUUAwG9ZHNTp9QuMk0ZjKZIHVguNNeMabFHuYgDEIFzZfn7mx58-9aZ8LdDgVNq0dyahDlEZWSwD9XZuLg3HkesTnqVfyLfgxkA0KUxKPXB_B_akKFlXu0da3Q");
 
 var requestOptions = {
   method: 'GET',
@@ -69,10 +79,10 @@ var requestOptions = {
 window.addEventListener('load', e => {
   e.preventDefault();
   fetch(`https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals?type=dog&sort=-recent`, requestOptions)
-  .then(response => response.json())
-  .then(function (data) {
-    renderDog(data.animals)
-  });
+    .then(response => response.json())
+    .then(function (data) {
+      renderDog(data.animals)
+    });
 });
 
 searchBtn.addEventListener('click', (event) => {
@@ -85,7 +95,7 @@ searchBtn.addEventListener('click', (event) => {
     .then(response => response.json())
     .then(function (data) {
       console.log('data', data)
-    
+
       renderDog(data.animals)
     });
 });
