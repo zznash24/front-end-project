@@ -19,3 +19,9 @@ li {
 .card {
     margin: 5px;
 }
+
+.mState {
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+}
