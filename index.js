@@ -29,7 +29,7 @@ function renderDog(animalsArray) {
                           <div class="card-body">
                               <h5 class="card-title">${currentDog.breeds.primary}</h5>
                               <p class="card-text">${currentDog.age}</p>
-                              <a href="#" class="btn btn-primary">Adopt Me</a>
+                              <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
                           </div>
                         </div>`
       dogsCon.innerHTML += dogCard
@@ -54,7 +54,7 @@ let search_bar = document.getElementById('search-text');
 let searchBtn = document.getElementById('search_button');
 
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6ImYzNDFiODYyNDdhOWFhZDU5MDhjODYwZDRhZDQ0YmJmZDk3MjI0NTA3YTk0ZTI1YzZmZTllZDQ1ODNiZDJiZGMyYmYzYTRmMzkyOGVlZGYxIiwiaWF0IjoxNjQ1NzU1MjEyLCJuYmYiOjE2NDU3NTUyMTIsImV4cCI6MTY0NTc1ODgxMiwic3ViIjoiIiwic2NvcGVzIjpbXX0.UymagCaUFnGtwBfDSMnQWHwhoVtKTXn8172Nu4cbSUeJajCtvOiTvoluBkIuXJMUYglQf8fI_B6gzrdH8CijnSilkC17d8x-V8hk6kL_lzMDhpD2_3WObKELIfBAdWPnkSTcgtrLuosdRGgCL-bJUoSkaSOvqnIczatYrEuW4ZHtIrvox2vZmuwGmPm7e80b7FAtlTBWNzL6C6nbVWjR1EQzI5vLIGMWAX_ClRUkubtZSBUgpopVUrFfibLx4DUjfN1Mr2LEdUMhO_8W3YKBvcbpqnR5z9iAPISk-g1Nh2LMwXeA9wp3UHfWRlaEY5wW84R3Rd8dzmsaRC3lSG2K1w");
+myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjI5OTc1ZTM5NTJiYTRjMWY2MWJhZGJiYjJlZjhhNDgxOGVlMDJiMzQxYmFiOGMxNjM1MWM0MDYxNDRkNTBlOGY4NTNiMzk1ZDU2ZTg1Y2EzIiwiaWF0IjoxNjQ1NzU1Njk4LCJuYmYiOjE2NDU3NTU2OTgsImV4cCI6MTY0NTc1OTI5OCwic3ViIjoiIiwic2NvcGVzIjpbXX0.JUPgGFGBKbcCL-7FYDl3CTURvA-yTWTisyZSUvzGseT1Wk6a_Cc5TIBONeKPmd0T3DqGNUHeFWgeU-ZPV1rjamDcFC499RvD8yU9lSFR57Hsb_0a6qtBMPtMAi4x5kMk1pE0Y9FJ1gindBdKv3_GSVjwn9zyiJps2qG0QbekiLBeBtKK1RLfonjCHh-8b7cyGetbMMyZARt7QB8NrzSn-o2fJ64S4trrPnSYx6KpCeipFONgfm9TioCVE3GG-VF0NK3eqHbmWLySQd-RvZ7TYFN4gOR3lR87cHOYU74XNCf81TwZXwblxvymIyJjDPLgutJodYOOHWrh2izbUmCNkw");
 
 var requestOptions = {
   method: 'GET',
