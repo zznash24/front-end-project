@@ -25,3 +25,18 @@ li {
     text-align: center;
     font-weight: bold;
 }
+
+#mPage {
+    background-image: url(https://d17fnq9dkz9hgj.cloudfront.net/uploads/2017/06/why-are-dogs-scared-of-firework-header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 575px;
+}
+
+#cenBox {
+    max-width: fit-content, 500px;
+    max-height: fit-content;
+    padding: 3px;
+    position: absolute;
+    
+}
