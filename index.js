@@ -1,4 +1,3 @@
-
 //This is the API for the random dog facts that will be appearing towards the top of the page.
 
 let factNumber = 1;
@@ -16,14 +15,12 @@ function renderDogFacts() {
 renderDogFacts()
 
 //Called function for generating the card for adoptable dogs
-console.log('im here');
-
 function renderDog(animalsArray) {
-  console.log('data fetch', animalsArray)
   const dConInner = document.createElement("div")   
   let dogHTML = animalsArray.map(currentDog => {
 
-    if (currentDog.primary_photo_cropped === null || currentDog.primary_photo_cropped.small === '') {
+    if (currentDog.primary_photo_cropped === null || currentDog.primary_photo_cropped.small ==='') 
+    {
       let dogCard =  `<div class="card text-white bg-dark" style="width: 18rem;">
                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj_vJblJLSn59TSwKbG3-CawQ39uUHDX3vf0nX8q48Mr8anv5aBai_OGk2HrtqlVh1sy0&usqp=CAU" class="card-img-top" alt="...">
                           <div class="card-body">
@@ -54,7 +51,7 @@ let search_bar = document.getElementById('search-text');
 let searchBtn = document.getElementById('search_button');
 
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6ImNmN2I0NTk0Mzg5MGIxNGViN2ExYTAwMzE0MmY5NjFkMTBlNzVkNTdlNDQwZjE5YmE4NGNlYjI4MjY2MTUwNGExMjI1Y2FkM2JhZmJiODI0IiwiaWF0IjoxNjQ1ODg5MzUwLCJuYmYiOjE2NDU4ODkzNTAsImV4cCI6MTY0NTg5Mjk1MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.VycgijqaNuQmY2utQAkpP3ikaOYspu4vGCs3-EGikE0sYlJ5f1sM97OsV0_NNEHjOMjwrA66PfXdBA1unrXuJmWQW_2lFbgpjohGUOFeeTHKINqLoSfFtYaKu-UlgTpncm3AhTH11DqXAVkl-Pdd7qIiE7X2itrPRbH8ZQbQdO3nPkkhK4MJcGAC8KauuhQr1wW63M8L_nYODbGyHfnNAXybiYLmWk9mN1yAtoYtAP7K-IuPz1NyCJ981Fu6VbAaY7WwUzLmipMolwWYLOyHFBY0oeItoC-Q7NgYQe8UX_8EVrNWG8ntDh0k3OvjH4_Yckrtyur7iDvjeFxJoxfhBw");
+myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjRiNWU4OGZkODU4ZTgwZmRiOTdiZTNkZTE0NDQ5MGQ4YzRkZTdhMzJkMDE1NTE3NDEwNzljM2M0ZDk5ODdiNzFlYzM4ZTBiNWViMDkwYTE4IiwiaWF0IjoxNjQ1ODk0ODI5LCJuYmYiOjE2NDU4OTQ4MjksImV4cCI6MTY0NTg5ODQyOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.q-YFizNykd9CaTTK460X2QcTDpYoEOO-2dl9016rJRMqPGkxdoSrI8RCE77udiurEkr8DzFRUx8qUR5l5YlHc_z8FWFoeJuL7-slnxzkRphI2ARei-SFG2aDh3lvZ6NcDuR50sUYMhn7sw02dS-3WD4az32EogHu4HSFPciptnHKmOcVGrm8cQowvBM9la4U7eEWeAKm_JYuCFH5qcxP74xonOiCM6rkM3lwBUQ9ba8lB4IjS-Ewv0k6Qr3OfmZru4sJJOMQHEyXEkhothE4qEzkNrVw2UoJQsHUp3AzLaUbxBZoKE4jeYsA7hm3VgVT7qL3Ymxqi3kuk13gNelkZw");
 
 var requestOptions = {
   method: 'GET',
@@ -64,10 +61,8 @@ var requestOptions = {
 
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log('search btn click');
   let search_string = search_bar.value;
-  console.log('after search', search_string)
-  
+    
     // fetch(`https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
       fetch(`https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
       .then(response => response.json())
