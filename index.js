@@ -20,11 +20,11 @@ console.log('im here');
 
 function renderDog(animalsArray) {
   console.log('data fetch', animalsArray)
-  const dConInner = document.createElement("div")   
+  const dConInner = document.createElement("div")
   let dogHTML = animalsArray.map(currentDog => {
 
     if (currentDog.primary_photo_cropped === null || currentDog.primary_photo_cropped.small === '') {
-      let dogCard =  `<div class="card text-white bg-dark" style="width: 18rem;">
+      let dogCard = `<div class="card text-white bg-dark" style="width: 18rem;">
                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj_vJblJLSn59TSwKbG3-CawQ39uUHDX3vf0nX8q48Mr8anv5aBai_OGk2HrtqlVh1sy0&usqp=CAU" class="card-img-top" alt="...">
                           <div class="card-body">
                               <h5 class="card-title">${currentDog.breeds.primary}</h5>
@@ -32,9 +32,9 @@ function renderDog(animalsArray) {
                               <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
                           </div>
                         </div>`
-        dogsCon.innerHTML += dogCard 
+      dogsCon.innerHTML += dogCard
     } else {
-      let dogCard =  `<div class="card text-white bg-dark" style="width: 18rem;">
+      let dogCard = `<div class="card text-white bg-dark" style="width: 18rem;">
                           <img src="${currentDog.primary_photo_cropped.small}" class="card-img-top" alt="...">
                           <div class="card-body">
                               <h5 class="card-title">${currentDog.breeds.primary}</h5>
@@ -42,9 +42,9 @@ function renderDog(animalsArray) {
                               <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
                           </div>
                         </div>`
-        dogsCon.innerHTML += dogCard;
+      dogsCon.innerHTML += dogCard;
     }
-    }).join('');
+  }).join('');
 }
 
 //THis is the API for the Adoptable pets on the page
@@ -67,24 +67,24 @@ searchBtn.addEventListener('click', (event) => {
   console.log('search btn click');
   let search_string = search_bar.value;
   console.log('after search', search_string)
-  
-    // fetch(`https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
-      fetch(`https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
-      .then(response => response.json())
-      .then(function (data) {
-        console.log('data', data)
+
+  // fetch(`https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
+  fetch(`https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
+    .then(response => response.json())
+    .then(function (data) {
+      console.log('data', data)
       renderDog(data.animals)
-      });
+    });
 });
- 
- 
+
+
 function nextFact() {
   factNumber++;
   renderDogFacts();
 }
 
 function previousFact() {
-  if (factNumber==0) {
+  if (factNumber == 0) {
     return;
   }
   factNumber--;
