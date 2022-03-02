@@ -11,3 +11,13 @@ body {
     background-color: #924031;
     border-color: black;
 }
+
+.btn-primary:focus {
+    background-color: #924031;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: black;
+}
