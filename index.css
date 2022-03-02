@@ -32,6 +32,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 575px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #cenBox {
@@ -39,4 +41,24 @@ body {
     max-height: fit-content;
     padding: 3px;
     position: absolute;    
+}
+
+.btn-primary {
+    background-color: #e7664f;
+    border-color: black;
+}
+
+.btn-primary:hover {
+    background-color: #924031;
+    border-color: black;
+}
+
+.btn-outline-secondary {
+    border-color: #924031;
+    color: #e7664f;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #a85303;
+    border-color: black;
 }
