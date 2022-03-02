@@ -14,6 +14,22 @@ function renderDogFacts() {
 }
 renderDogFacts();
 
+function isTheAnimalFixed(currentDog) {
+  if (currentDog.attributes.spayed_neutered == false) {
+    return '&#10060';
+  }else {
+    return '&#9989';
+  }
+};
+
+function isTheAnimalVacced(currentDog) {
+  if (currentDog.shots_current == false){
+    return '&#10060'
+  }else {
+    return '&#9989';
+  }
+};
+
 //Called function for generating the card for adoptable dogs
 function renderDog(animalsArray) {
 
@@ -32,7 +48,9 @@ function renderDog(animalsArray) {
                   <p class="card-text">${currentDog.age}</p>
               </div>
               <div class="col-6">
-                Spade
+                <p class="card-text">Gender: ${currentDog.gender}</p>
+                <p class="card-text">Fixed: ${isTheAnimalFixed(currentDog)}</p>
+                <p class="card-text">Vaccinated:${isTheAnimalVacced(currentDog)}</p>
               </div>
               <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
             </div>
@@ -49,7 +67,9 @@ function renderDog(animalsArray) {
                 <p class="card-text">${currentDog.age}</p>
               </div>
               <div class="col-6">
-                Spade
+                <p class="card-text">Gender: ${currentDog.gender}</p>
+                <p class="card-text">Fixed: ${isTheAnimalFixed(currentDog)}</p>
+                <p class="card-text">Vaccinated: ${isTheAnimalVacced(currentDog)}</p>
               </div>
                 <a href="${currentDog.url}" target="_blank" class="btn btn-primary">Adopt Me</a>
             </div>
@@ -68,7 +88,7 @@ let searchBtn = document.getElementById('search_button');
 
 var myHeaders = new Headers();
 
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjViMWY1Zjg1NTBkYjc5NTljZGEyZGZjYjIzNTcxZDBkZDkwOWQ2ZDk0MzVkZGU4NjFmMGVmZTgyOWQzYWU5NmIxN2JkMjc2NGE0ZWI5ZDUwIiwiaWF0IjoxNjQ1OTAwODgzLCJuYmYiOjE2NDU5MDA4ODMsImV4cCI6MTY0NTkwNDQ4Mywic3ViIjoiIiwic2NvcGVzIjpbXX0.G74zQOThzFX8yU69vOYFkRSeENuDOzhGnxuw0Yn1gyXNtWlh5vf49KGuBq0TSzvw36tFv0QV7tiiIJS5h7Lxv8tYCFujecrLN8dLbrCEdOyNBvrGePJymnidejTHFH9M66svx20vQowOxtscY3BtmQLYzmnAWGK7HVnc9hkIZhtuehTJTxnxYe2QThBSg0JatClIWf9qM8Jm7tQzAlo5Kg3NYmXicUUAwG9ZHNTp9QuMk0ZjKZIHVguNNeMabFHuYgDEIFzZfn7mx58-9aZ8LdDgVNq0dyahDlEZWSwD9XZuLg3HkesTnqVfyLfgxkA0KUxKPXB_B_akKFlXu0da3Q");
+myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjIwNzg1OTRkYzlkNmQ3MDY3ZGFkNGQ0Zjk3MmJlNjQwNDgzMzg0ZmY5MTgwZjFhNTAwODJkODMwZTYwYTcyMmZkNGI1MTY0ZjJjN2NhN2MwIiwiaWF0IjoxNjQ2MTc5NzAyLCJuYmYiOjE2NDYxNzk3MDIsImV4cCI6MTY0NjE4MzMwMiwic3ViIjoiIiwic2NvcGVzIjpbXX0.VdYN4dXSX3h82ZnaZzMaFAif0QhiS9lowVS0aYGxwNmZr3jQLQuO2tDAIWQgGetQzrN-u8Pg3Eg7SToRiXVVpZVsFHI9gAFeo2c2GHqfJDHi7bicILrqtkJfR03JJCauRJhTCs-90FNsIS5U1ANEi0aCDN86R8JnGpyeZrLMW0mGbg3cEeMPR0nl2w1-Gbjm4YqnwUddvkwNn03rWWkPi6gYYpdSKkYR8QzAf7-ygKp8WvhneYIr1-b17dQ-woF--IfA_F7TPSEsz_RewwIkS1OBTkTK0dOrGzsRcrkUFajokhgu1XmOCTTP2X8tJHuLQouDLq1shB5u0sT0kYHKJA");
 
 var requestOptions = {
   method: 'GET',
