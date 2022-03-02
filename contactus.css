@@ -2,3 +2,11 @@ body {
     background-color: #f7efe5;
 }
 
+.btn-primary {
+    background-color: #e7664f;
+    border-color: black;
+}
+
+.btn-primary:hover {
+    background-color: #924031;
+}
