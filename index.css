@@ -2,11 +2,11 @@ body {
     background-color: #f7efe5;
 }
 
-/* li {
-    
-    font-weight: bold;
-    margin: 2px;
-} */
+.lead{
+    margin-top: 50px;
+    height: 100px!important;
+    overflow: auto;
+}
 
 .card-img-top {
     width: 100%;
@@ -37,10 +37,11 @@ body {
 }
 
 #cenBox {
-    max-width: fit-content, 500px;
+    width: 700px;
+    max-width: 700px;
     max-height: fit-content;
     padding: 3px;
-    position: absolute;    
+    position: absolute;
 }
 
 .btn-primary {
@@ -75,4 +76,10 @@ body {
 .search-bar:focus {
     box-shadow: none;
     border-color: black;
+}
+
+@media only screen and (max-width: 700px){
+    #cenBox {
+        width: 100%;
+    }
 }
