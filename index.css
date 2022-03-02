@@ -53,6 +53,11 @@ body {
     border-color: black;
 }
 
+.btn-primary:focus {
+    background-color: #924031;
+    box-shadow: none;
+}
+
 .btn-outline-secondary {
     border-color: #924031;
     color: #e7664f;
@@ -60,5 +65,14 @@ body {
 
 .btn-outline-secondary:hover {
     background-color: #a85303;
+    border-color: black;
+}
+
+.btn-outline-secondary:focus {
+    box-shadow: none;
+}
+
+.search-bar:focus {
+    box-shadow: none;
     border-color: black;
 }
