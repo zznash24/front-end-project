@@ -41,25 +41,14 @@ let dogFact = [];
 
 function renderDogFacts() {
   let dogFactHTML = document.getElementById('dogFacts')
-    
-  fetch("https://dog-api.kinduff.com/api/facts?number=1", {
-    method: 'GET',
-    redirect: 'follow', mode: "no-cors"
+  axios.get(`https://cors-anywhere.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  }).then(response => {
+    dogFactHTML.innerHTML = response.data[0].fact;
+    dogFact.push(response.data[0].fact);
   })
-    .then(response => response.json())
-    .then(response => {
-      dogFactHTML.innerHTML = response.data[0].fact;
-      dogFact.push(response.data[0].fact);
-    })
-    .catch(error => console.log('error', error));
-  // axios.get(`https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*'
-  //   }
-  // }).then(response => {
-  //   dogFactHTML.innerHTML = response.data[0].fact;
-  //   dogFact.push(response.data[0].fact);
-  // })
 }
 renderDogFacts();
 
@@ -147,6 +136,8 @@ searchBtn.addEventListener('click', (event) => {
       renderDog(data.animals)
     });
 });
+
+
 
 function nextFact() {
   factNumber++;
