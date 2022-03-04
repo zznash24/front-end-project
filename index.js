@@ -1,11 +1,47 @@
 //This is the API for the random dog facts that will be appearing towards the top of the page.
 
+// var myHeaders = new Headers();
+// myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+let bearerToken = '';
+var urlencoded = new URLSearchParams();
+urlencoded.append("grant_type", "client_credentials");
+urlencoded.append("client_id", "v0i8v5rg1UdfHNvpCqsVXBQdcPYN9wmfI9eZOiDUz3NOUZBHFY");
+urlencoded.append("client_secret", "clbO2ocTCF6brZhuxhgQrMJKZtS5eJXleqP9WSdv");
+
+var requestOptionsBearer = {
+  method: 'POST',
+  body: urlencoded,
+  redirect: 'follow'
+};
+
+var myHeaders = new Headers();
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://api.petfinder.com/v2/oauth2/token", requestOptionsBearer)
+  .then(response => response.json())
+  .then(result => {
+    bearerToken = result.access_token;
+    myHeaders.append("Authorization", `Bearer ${bearerToken}`);
+    fetch(`https://api.petfinder.com/v2/animals?type=dog&sort=-recent`, requestOptions)
+    .then(response => response.json())
+    .then(function (data) {
+      renderDog(data.animals)
+    });
+    console.log(result)
+  })
+  .catch(error => console.log('error', error));
+
 let factNumber = 0;
 let dogFact = [];
 
 function renderDogFacts() {
   let dogFactHTML = document.getElementById('dogFacts')
-  axios.get(`https://cors-anywhere.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
+  axios.get(`https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
@@ -86,32 +122,13 @@ let search = document.getElementById('search-form');
 let search_bar = document.getElementById('search-text');
 let searchBtn = document.getElementById('search_button');
 
-var myHeaders = new Headers();
-
-myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJ2MGk4djVyZzFVZGZITnZwQ3FzVlhCUWRjUFlOOXdtZkk5ZVpPaURVejNOT1VaQkhGWSIsImp0aSI6IjRhZjIwODFmY2YxNmExZjQxMjIxNzhkMzRjNmMxN2FmMmY2Njk1NTNkNGQwNmEwZjljMmZjYjYwYTVkNzhhMTBiYzY1NjFjNjA1ODNmNWRjIiwiaWF0IjoxNjQ2Mjc0NTYxLCJuYmYiOjE2NDYyNzQ1NjEsImV4cCI6MTY0NjI3ODE2MSwic3ViIjoiIiwic2NvcGVzIjpbXX0.cmI4OUIq4AjgheUQigURwYH06TveV-rqEQXbd5L9pQPTI_iAGEN97NPzjslZG1vthky7SqgjQPAVeLlWGC_8VFrGor32odJohe_rRYVM1LAx7s51Rld_ktuReiahTugRrtpJwSNbgXkNKu532GtpDb2yBXV-KKizHUmeSai2gTK4NJ0L6c8lFO0dDtaV6NT2olQf7fO1vrKmZ9Lsv65giHxkMajfkVfnQCI9QYtXkpW8ErEHSm2DBunCMqGa0gv2Ji7viLNa3G5aLPXr4UlaOh-EZ5OqGyhB81evtXUAo52BY4-8v1yPZ1oeChmID4ApnuS3KJakkJwKGGYHjRMLxA");
-
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
-
-window.addEventListener('load', e => {
-  e.preventDefault();
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals?type=dog&sort=-recent`, requestOptions)
-    .then(response => response.json())
-    .then(function (data) {
-      renderDog(data.animals)
-    });
-});
-
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault();
   let search_string = search_bar.value;
 
   console.log('after search', search_string)
 
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
+  fetch(`https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
     .then(response => response.json())
     .then(function (data) {
       console.log('data', data)
@@ -119,8 +136,6 @@ searchBtn.addEventListener('click', (event) => {
       renderDog(data.animals)
     });
 });
-
-
 
 function nextFact() {
   factNumber++;
