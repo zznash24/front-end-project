@@ -41,14 +41,25 @@ let dogFact = [];
 
 function renderDogFacts() {
   let dogFactHTML = document.getElementById('dogFacts')
-  axios.get(`https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  }).then(response => {
-    dogFactHTML.innerHTML = response.data[0].fact;
-    dogFact.push(response.data[0].fact);
+    
+  fetch("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1", {
+    method: 'GET',
+    redirect: 'follow'
   })
+    .then(response => response.text())
+    .then(response => {
+      dogFactHTML.innerHTML = response.data[0].fact;
+      dogFact.push(response.data[0].fact);
+    })
+    .catch(error => console.log('error', error));
+  // axios.get(`https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
+  //   headers: {
+  //     'Access-Control-Allow-Origin': '*'
+  //   }
+  // }).then(response => {
+  //   dogFactHTML.innerHTML = response.data[0].fact;
+  //   dogFact.push(response.data[0].fact);
+  // })
 }
 renderDogFacts();
 
