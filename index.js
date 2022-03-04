@@ -44,9 +44,9 @@ function renderDogFacts() {
     
   fetch("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1", {
     method: 'GET',
-    redirect: 'follow'
+    redirect: 'follow', mode: "no-cors"
   })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(response => {
       dogFactHTML.innerHTML = response.data[0].fact;
       dogFact.push(response.data[0].fact);
