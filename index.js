@@ -42,7 +42,7 @@ let dogFact = [];
 function renderDogFacts() {
   let dogFactHTML = document.getElementById('dogFacts')
     
-  fetch("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1", {
+  fetch("https://dog-api.kinduff.com/api/facts?number=1", {
     method: 'GET',
     redirect: 'follow', mode: "no-cors"
   })
