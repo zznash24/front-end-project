@@ -32,7 +32,6 @@ fetch("https://api.petfinder.com/v2/oauth2/token", requestOptionsBearer)
     .then(function (data) {
       renderDog(data.animals)
     });
-    console.log(result)
   })
   .catch(error => console.log('error', error));
 
@@ -41,16 +40,18 @@ let dogFact = [];
 
 function renderDogFacts() {
   let dogFactHTML = document.getElementById('dogFacts')
-  axios.get(`https://cors-anywhere.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`, {
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  }).then(response => {
-    dogFactHTML.innerHTML = response.data[0].fact;
-    dogFact.push(response.data[0].fact);
+  axios.get(`https://www.dogfactsapi.ducnguyen.dev/api/v1/facts/?number=1`
+  // , {
+  //   https://cors-anywhere.herokuapp.com/
+  //   headers: {
+  //     'Access-Control-Allow-Origin': '*'
+  //   }
+  // }
+  ).then(response => {
+    dogFactHTML.innerHTML = response.data.facts;
+    dogFact.push(response.data.facts);
   })
 }
-renderDogFacts();
 
 function isTheAnimalFixed(currentDog) {
   if (currentDog.attributes.spayed_neutered == false) {
@@ -126,12 +127,9 @@ searchBtn.addEventListener('click', (event) => {
   event.preventDefault();
   let search_string = search_bar.value;
 
-  console.log('after search', search_string)
-
   fetch(`https://api.petfinder.com/v2/animals?type=dog&location=${search_string}`, requestOptions)
     .then(response => response.json())
     .then(function (data) {
-      console.log('data', data)
 
       renderDog(data.animals)
     });
