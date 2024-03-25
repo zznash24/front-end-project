@@ -39,18 +39,21 @@ let factNumber = 0;
 let dogFact = [];
 
 function renderDogFacts() {
-  let dogFactHTML = document.getElementById('dogFacts')
-  axios.get(`https://www.dogfactsapi.ducnguyen.dev/api/v1/facts/?number=1`
-  // , {
-  //   https://cors-anywhere.herokuapp.com/
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*'
-  //   }
-  // }
-  ).then(response => {
-    dogFactHTML.innerHTML = response.data.facts;
-    dogFact.push(response.data.facts);
-  })
+  let dogFactHTML = document.getElementById('dogFacts');
+  fetch(`https://www.dogfactsapi.ducnguyen.dev/api/v1/facts/?number=1`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      dogFactHTML.innerHTML = data.facts;
+      dogFact.push(data.facts);
+    })
+    .catch(error => {
+      console.error('Error fetching dog facts:', error);
+    });
 }
 
 function isTheAnimalFixed(currentDog) {
